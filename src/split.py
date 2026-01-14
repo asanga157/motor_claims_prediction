@@ -1,4 +1,11 @@
-# src/split.py
+"""
+Train / test split utilities.
+
+Provides controlled (80% train and 20% test) and reproducible data splitting logic used
+during model training and evaluation.
+"""
+
+
 from __future__ import annotations
 
 from dataclasses import dataclass

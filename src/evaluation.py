@@ -1,4 +1,12 @@
-# src/evaluation.py
+"""
+Model evaluation and comparison logic.
+
+Provides utilities to train models, evaluate performance on
+train/test datasets, and produce comparison tables for
+model selection.
+"""
+
+
 from __future__ import annotations
 
 from typing import Any, Dict

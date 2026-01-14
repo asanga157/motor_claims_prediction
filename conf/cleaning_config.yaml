@@ -1,4 +1,13 @@
-# conf/cleaning_config.yaml
+# -----------------------------------------------------------------------------
+# Data Cleaning & Quality Rules Configuration
+# -----------------------------------------------------------------------------
+# Defines domain rules, thresholds, and tolerances used during data
+# preprocessing and validation of motor insurance claims data.
+#
+# This config controls duplicate handling, outlier detection, cost
+# consistency checks, and low-cost sanity rules.
+# -----------------------------------------------------------------------------
+
 
 # Parsing / typing
 date_columns: ["Claim_Date"]

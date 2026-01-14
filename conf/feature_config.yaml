@@ -1,3 +1,16 @@
+# -----------------------------------------------------------------------------
+# Feature Engineering Configuration (FNOL-Safe)
+# -----------------------------------------------------------------------------
+# Controls feature creation for motor repair cost prediction using
+# only information available at First Notice of Loss (FNOL).
+#
+# Includes settings for numeric, categorical, text-derived features,
+# historical cost indices, and leakage prevention rules.
+# -----------------------------------------------------------------------------
+
+
+
+
 claim_date_col: Claim_Date
 target_col: Total_Repair_Cost
 initial_estimate_col: Initial_Estimate
@@ -7,7 +20,7 @@ photos_col: Photos_Available
 include_initial_estimate: true
 
 use_external_text_features: true
-external_text_features_path: "data/text_features_with_parts.csv"   # <-- make this relative
+external_text_features_path: "/Users/asanga/suncorp/text_features_with_parts.csv"   # <-- make this relative
 
 cat_cols:
   - Vehicle_Make

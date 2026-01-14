@@ -1,0 +1,45 @@
+# -----------------------------------------------------------------------------
+# LLM Text Feature Extraction Configuration
+# -----------------------------------------------------------------------------
+# Controls how Large Language Models (LLMs) are used to extract structured
+# damage information from free-text claim descriptions such as FNOL notes
+# or repair shop reports.
+#
+# This config defines schema options, runtime behaviour, and feature
+# generation settings for LLM-derived features.
+# -----------------------------------------------------------------------------
+
+
+# conf/llm_extraction_config.yaml
+
+# Toggle make/model extraction in schema + features
+include_make_model: true
+
+# OpenAI call config
+llm:
+  model: "gpt-4o-mini"
+  max_retries: 3
+  retry_backoff_s: 0.8
+  temperature: 0.0
+  timeout_s: 30.0
+  cache_enabled: true
+
+# Column names (so this module can be reused across datasets)
+text_columns:
+  fnol_notes_col: "FNOL_Notes"
+  repair_shop_report_col: "Repair_Shop_Report"   # may be excluded in FNOL-safe mode
+
+# Optional: control which columns you run extraction on
+# (e.g., FNOL only, or FNOL + repair notes for offline analysis)
+modes:
+  fnol_only: true
+  include_repair_shop_report: false
+
+# Feature generation options
+features:
+  prefix_fnol: "llm_fnol__"
+  prefix_repair: "llm_repair__"
+
+  # Extendable vocab lists used to create boolean flags
+  damage_vocab: ["dent", "scratch", "scratches", "broken", "crack", "bent", "shattered", "misaligned"]
+  component_vocab: ["door", "bumper", "hood", "bonnet", "fender", "panel", "wheel", "rim", "mirror", "windshield", "windscreen", "roof", "trunk", "boot"]

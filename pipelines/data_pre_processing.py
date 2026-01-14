@@ -1,4 +1,15 @@
-# pipelines/data_pre_processing.py
+"""
+Data preprocessing and quality checks for motor insurance claims.
+
+This module adds non-destructive data quality flags to identify
+duplicates, domain violations, cost inconsistencies, outliers,
+and other anomalies commonly found in claims data.
+
+The logic is designed to support configurable filtering strategies
+(e.g. hard vs strict) while preserving transparency and auditability.
+"""
+
+
 from __future__ import annotations
 
 import argparse

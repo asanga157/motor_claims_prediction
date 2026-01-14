@@ -1,4 +1,11 @@
-# src/explainability.py
+"""
+Model explainability utilities.
+
+Supports feature importance, permutation importance, and optional
+SHAP-based explanations to explains the model output to claims managers.
+"""
+
+
 from __future__ import annotations
 
 from dataclasses import dataclass

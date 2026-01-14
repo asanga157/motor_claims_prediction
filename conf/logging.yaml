@@ -1,4 +1,13 @@
-# conf/logging.yaml
+# -----------------------------------------------------------------------------
+# Logging Configuration
+# -----------------------------------------------------------------------------
+# Defines logging format, log levels, and handlers used across pipelines.
+#
+# Enables consistent logging for debugging, monitoring, and auditability
+# during data preprocessing, model training, and evaluation.
+# -----------------------------------------------------------------------------
+
+
 version: 1
 disable_existing_loggers: false
 

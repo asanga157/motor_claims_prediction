@@ -1,4 +1,13 @@
-# src/feature_engineering.py
+"""
+Feature engineering for motor repair cost prediction.
+
+Implements a scikit-learn compatible transformer that creates
+model-ready features using only information available at
+First Notice of Loss (FNOL).
+"""
+
+
+
 from __future__ import annotations
 
 from dataclasses import dataclass

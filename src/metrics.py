@@ -1,4 +1,11 @@
-# src/metrics.py
+"""
+Evaluation metrics for regression models.
+
+Implements business-relevant error metrics such as MAE, RMSE,
+MAPE, overall MAPE, and directional MAPE for claims cost prediction.
+"""
+
+
 from __future__ import annotations
 
 import numpy as np

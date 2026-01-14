@@ -1,4 +1,12 @@
-# src/config.py
+"""
+Configuration loading utilities.
+
+This module provides helper functions to load YAML configuration files
+from the conf/ directory and convert them into Python dictionaries or
+dataclass-based configuration objects used across the project.
+"""
+
+
 from __future__ import annotations
 
 from dataclasses import dataclass

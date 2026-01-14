@@ -1,3 +1,13 @@
+# -----------------------------------------------------------------------------
+# Model Configuration
+# -----------------------------------------------------------------------------
+# Defines the list of models, hyperparameters, and evaluation settings
+# used during training and comparison.
+#
+# This config enables controlled experimentation without changing code.
+# -----------------------------------------------------------------------------
+
+
 random_state: 42
 test_size: 0.2
 

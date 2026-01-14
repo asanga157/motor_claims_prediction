@@ -1,4 +1,11 @@
-# src/models.py
+"""
+Model factory definitions.
+
+Defines and returns machine learning models used for repair cost
+prediction, with hyperparameters driven by configuration.
+"""
+
+
 from __future__ import annotations
 
 from dataclasses import dataclass

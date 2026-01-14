@@ -1,4 +1,16 @@
-# pipelines/model_training_pipeline.py
+
+"""
+End-to-end model training and evaluation pipeline.
+
+This pipeline orchestrates feature engineering, train/test splitting,
+model training, evaluation, and explainability in a reproducible,
+config-driven manner.
+
+It is intended to demonstrate a production-style workflow suitable
+for batch execution and interview walkthroughs.
+"""
+
+
 from __future__ import annotations
 
 import argparse
