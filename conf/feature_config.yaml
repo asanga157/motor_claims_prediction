@@ -1,0 +1,65 @@
+claim_date_col: Claim_Date
+target_col: Total_Repair_Cost
+initial_estimate_col: Initial_Estimate
+fnol_notes_col: FNOL_Notes
+photos_col: Photos_Available
+
+include_initial_estimate: true
+
+use_external_text_features: true
+external_text_features_path: "data/text_features_with_parts.csv"   # <-- make this relative
+
+cat_cols:
+  - Vehicle_Make
+  - Vehicle_Model
+  - Loss_Cause
+  - Repair_Shop_ID
+  - Region
+  - Liability_Assessment
+
+num_cols:
+  - Year_of_Manufacture
+  - Vehicle_Age
+  - Odometer_km
+  - Initial_Estimate
+
+excluded_cols:
+  - Labour_Hours
+  - Parts_Cost
+  - Paint_Cost
+  - Shop_Rate_per_Hour
+  - Repair_Shop_Report
+  - Settlement_Time_Days
+
+odometer_bucket_size: 10000
+
+vehicle_age_bins: [-1, 3, 7, 12, 20, .inf]
+vehicle_age_labels: ["0_3", "4_7", "8_12", "13_20", "20_plus"]
+
+min_freq_for_common: 50
+smoothing_k: 20.0
+
+use_tfidf: false
+tfidf_max_features: 5000
+tfidf_ngram_range: [1, 2]
+
+severity_keywords: ["minor", "moderate", "severe", "total", "write-off", "airbag"]
+impact_keywords: ["rear", "front", "side", "head-on", "collision", "impact"]
+part_keywords:
+  - bumper
+  - door
+  - hood
+  - bonnet
+  - fender
+  - quarter
+  - trunk
+  - boot
+  - windshield
+  - windscreen
+  - mirror
+  - wheel
+  - rim
+  - headlight
+  - taillight
+  - grille
+  - roof

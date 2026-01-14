@@ -7,6 +7,10 @@ from typing import Any, Dict, Tuple
 
 import yaml
 
+# add to src/config.py (below cleaning_config_from_yaml)
+from src.feature_engineering import FeatureConfig
+from src.split import SplitConfig
+
 
 @dataclass(frozen=True)
 class CleaningConfig:
@@ -89,3 +93,28 @@ def cleaning_config_from_yaml(path: str | Path) -> CleaningConfig:
     kwargs["text_columns"] = _tuple("text_columns", CleaningConfig().text_columns)
 
     return CleaningConfig(**kwargs)
+
+def feature_config_from_yaml(path: str | Path) -> FeatureConfig:
+    raw = load_yaml(path)
+
+    def _tuple(key: str, default):
+        v = raw.get(key, list(default))
+        return tuple(v) if isinstance(v, (list, tuple)) else default
+
+    kwargs = dict(raw)
+    # convert list to tuple
+    kwargs["cat_cols"] = _tuple("cat_cols", FeatureConfig().cat_cols)
+    kwargs["num_cols"] = _tuple("num_cols", FeatureConfig().num_cols)
+    kwargs["excluded_cols"] = _tuple("excluded_cols", FeatureConfig().excluded_cols)
+    kwargs["vehicle_age_bins"] = tuple(raw.get("vehicle_age_bins", FeatureConfig().vehicle_age_bins))
+    kwargs["vehicle_age_labels"] = tuple(raw.get("vehicle_age_labels", FeatureConfig().vehicle_age_labels))
+    kwargs["tfidf_ngram_range"] = tuple(raw.get("tfidf_ngram_range", FeatureConfig().tfidf_ngram_range))
+    kwargs["severity_keywords"] = _tuple("severity_keywords", FeatureConfig().severity_keywords)
+    kwargs["impact_keywords"] = _tuple("impact_keywords", FeatureConfig().impact_keywords)
+    kwargs["part_keywords"] = _tuple("part_keywords", FeatureConfig().part_keywords)
+
+    return FeatureConfig(**kwargs)
+
+
+def model_config_from_yaml(path: str | Path) -> dict:
+    return load_yaml(path)

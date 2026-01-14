@@ -1,0 +1,21 @@
+random_state: 42
+test_size: 0.2
+
+models:
+  Linear_Regression:
+    type: linear_regression
+
+  Random_Forest:
+    type: random_forest
+    n_estimators: 300
+    max_depth: null
+    min_samples_leaf: 50
+    n_jobs: -1
+
+  Gradient_Boosting:
+    type: gradient_boosting
+    n_estimators: 300
+    learning_rate: 0.05
+    max_depth: 3
+
+best_model_selection_metric: Test_Overall_MAPE_%
