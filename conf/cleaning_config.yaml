@@ -1,0 +1,56 @@
+# conf/cleaning_config.yaml
+
+# Parsing / typing
+date_columns: ["Claim_Date"]
+dayfirst_dates: true
+
+numeric_columns:
+  - Year_of_Manufacture
+  - Vehicle_Age
+  - Odometer_km
+  - Labour_Hours
+  - Parts_Cost
+  - Paint_Cost
+  - Shop_Rate_per_Hour
+  - Total_Repair_Cost
+  - Initial_Estimate
+  - Settlement_Time_Days
+
+# Duplicate rules
+id_column: Claim_ID
+
+# Domain checks
+year_min: 1980
+year_max: 2026
+vehicle_age_min: 0
+vehicle_age_max: 60
+odometer_min: 0
+odometer_max: 1000000
+
+# Outlier detection
+iqr_k: 1.5
+outlier_columns:
+  - Total_Repair_Cost
+  - Parts_Cost
+  - Labour_Hours
+  - Shop_Rate_per_Hour
+  - Paint_Cost
+
+# Consistency checks tolerance
+component_total_tolerance_ratio: 0.95
+
+# Component columns
+parts_col: Parts_Cost
+paint_col: Paint_Cost
+labour_col: Labour_Hours
+rate_col: Shop_Rate_per_Hour
+total_col: Total_Repair_Cost
+
+# Text fields
+text_columns: ["FNOL_Notes", "Repair_Shop_Report"]
+
+# Low-cost sanity thresholds
+parts_min_abs: 20.0
+paint_min_abs: 30.0
+low_cost_rel_min_ratio: 0.01
+low_cost_high_total_threshold: 1500.0

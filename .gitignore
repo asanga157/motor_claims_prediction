@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+logs/
+*.log
+
+# Data (do NOT commit raw data)
+*.csv
+*.parquet
+*.xlsx
+
+# OS
+.DS_Store
