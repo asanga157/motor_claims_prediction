@@ -1,6 +1,6 @@
-# Motor Insurance Repair Cost Prediction (FNOL-Safe)
+# Motor Insurance Repair Cost Prediction
 
-This project builds an end-to-end machine learning pipeline to **predict the expected repair cost of motor insurance claims at FNOL (First Notice of Loss)** — the moment a customer first reports an accident.
+This project builds an end-to-end machine learning pipeline to **predict the expected repair cost of motor insurance claims** — the moment a customer first reports an accident.
 
 Accurate FNOL-level repair cost prediction helps insurers:
 - set early reserves more accurately
@@ -95,74 +95,77 @@ python -m venv .venv
 source .venv/bin/activate
 pip install -U pip
 pip install pandas numpy scikit-learn pyyaml matplotlib
-# Optional (for SHAP explainability)
 pip install shap
+```
 
-### 2) Run Data Preprocessing
+###  2) Run Data Preprocessing
 
 This step:
 
-parses types
+- parses types
 
-flags duplicates, invalid records, cost inconsistencies
+- flags duplicates, invalid records, cost inconsistencies
 
-applies configurable filtering rules
+- applies configurable filtering rules
 
-produces a clean FNOL-safe dataset
+- produces a clean FNOL-safe dataset
 
+```bash
 python -m pipelines.data_pre_processing \
   --input motor_repair_costs.csv \
   --mode strict
+```
 
+### Outputs
 
-Outputs
+- analysis/outputs/df_enriched.csv
 
-analysis/outputs/df_enriched.csv
+- analysis/outputs/df_filtered_strict.csv
 
-analysis/outputs/df_filtered_strict.csv
+- data quality reports (missingness, flag counts)
 
-data quality reports (missingness, flag counts)
-
-3) Run Model Training & Evaluation
+### 3) Run Model Training & Evaluation
 
 This step:
 
-splits train/test data
+- splits train/test data
 
-fits feature engineering on training data only (no leakage)
+- fits feature engineering on training data only (no leakage)
 
-evaluates multiple models
+- evaluates multiple models
 
-selects the best model using business-aligned metrics
+- selects the best model using business-aligned metrics
 
-optionally generates feature importance
+- generates feature importance
 
+
+```bash
 python -m pipelines.model_training_pipeline \
   --input analysis/outputs/df_filtered_strict.csv \
   --save_feature_importance
+```
 
+## Outputs
 
-Outputs
+- model comparison table
 
-model comparison table
+- feature importance for the best-performing model
 
-feature importance for the best-performing model
-
-Evaluation Metrics
+### Evaluation Metrics
 
 Models are evaluated using:
 
-MAE (Mean Absolute Error)
+- MAE (Mean Absolute Error)
 
-RMSE
+- RMSE
 
-R²
+- R²
 
-MAPE
+- MAPE
 
-Overall MAPE 
+- Overall MAPE 
 
-Directional MAPE (over-forecast vs under-forecast)
+- Directional MAPE (over-forecast vs under-forecast)
 
-This ensures both accuracy and business relevance.
+
 
